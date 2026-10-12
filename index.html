@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Okanlawon Micheal Olatunji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #0F2044;
+    --navy-light: #1A3260;
+    --blue: #2563EB;
+    --blue-light: #3B82F6;
+    --blue-glow: rgba(37,99,235,0.15);
+    --white: #F8FAFC;
+    --grey: #94A3B8;
+    --grey-light: #CBD5E1;
+    --green: #10B981;
+    --mono: 'JetBrains Mono', monospace;
+    --head: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --navy: #0A1628;
+      --white: #F8FAFC;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.7;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(37,99,235,0.15);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--blue-light);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--blue-light);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--blue-light);
+  }
+
+  h1 {
+    font-family: var(--head);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-sub {
+    font-family: var(--head);
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 400;
+    color: var(--blue-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-desc {
+    max-width: 560px;
+    color: var(--grey);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--blue-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--grey-light);
+    border: 1px solid rgba(148,163,184,0.3);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--blue-light);
+    color: var(--blue-light);
+    transform: translateY(-1px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(148,163,184,0.1);
+  }
+
+  .stat-num {
+    font-family: var(--head);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--grey);
+    margin-top: 0.3rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 5rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--blue-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-family: var(--head);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--grey);
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.9;
+  }
+
+  .about-text p strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .about-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(37,99,235,0.2);
+    border-radius: 8px;
+    background: var(--blue-glow);
+  }
+
+  .detail-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--blue-light);
+    letter-spacing: 0.08em;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(148,163,184,0.1);
+    border-radius: 8px;
+    background: var(--navy-mid);
+    transition: border-color 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: rgba(37,99,235,0.4);
+  }
+
+  .skill-category {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--blue-light);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.75rem;
+    background: rgba(37,99,235,0.1);
+    border: 1px solid rgba(37,99,235,0.2);
+    border-radius: 4px;
+    color: var(--grey-light);
+    font-family: var(--body);
+  }
+
+  /* PROJECTS */
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .project-card {
+    padding: 2rem;
+    border: 1px solid rgba(148,163,184,0.1);
+    border-radius: 10px;
+    background: var(--navy-mid);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover {
+    border-color: rgba(37,99,235,0.35);
+    transform: translateY(-2px);
+  }
+
+  .project-title {
+    font-family: var(--head);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--grey);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.2);
+    border-radius: 3px;
+    color: var(--green);
+  }
+
+  .project-link {
+    color: var(--blue-light);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: var(--mono);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(37,99,235,0.3);
+    border-radius: 5px;
+    transition: all 0.2s;
+  }
+
+  .project-link:hover {
+    background: var(--blue-glow);
+    border-color: var(--blue-light);
+  }
+
+  /* EXPERIENCE */
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .experience-list::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    bottom: 0;
+    width: 1px;
+    background: rgba(37,99,235,0.2);
+  }
+
+  .exp-item {
+    padding-left: 2.5rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0.5rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 2px solid var(--navy);
+    box-shadow: 0 0 0 2px var(--blue);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exp-role {
+    font-family: var(--head);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--blue-light);
+    background: var(--blue-glow);
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  .exp-org {
+    font-size: 0.875rem;
+    color: var(--blue-light);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.875rem;
+    color: var(--grey);
+    line-height: 1.7;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--blue-light);
+  }
+
+  /* PUBLICATIONS */
+  .pub-card {
+    padding: 2rem;
+    border: 1px solid rgba(37,99,235,0.2);
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--navy-mid) 0%, rgba(37,99,235,0.05) 100%);
+  }
+
+  .pub-title {
+    font-family: var(--head);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .pub-meta {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--blue-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .pub-abstract {
+    font-size: 0.875rem;
+    color: var(--grey);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--navy-mid);
+    border-radius: 12px;
+    padding: 3.5rem;
+    border: 1px solid rgba(37,99,235,0.15);
+    text-align: center;
+  }
+
+  .contact-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .contact-section p {
+    color: var(--grey);
+    font-size: 0.95rem;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--grey);
+    border-top: 1px solid rgba(148,163,184,0.08);
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    height: 1px;
+    background: rgba(148,163,184,0.08);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    section { padding: 3.5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .project-card { grid-template-columns: 1fr; }
+    .contact-section { padding: 2rem 1.5rem; }
+  }
+
+  /* CURSOR BLINK */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: var(--blue-light);
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">okanlawon.dev</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-tag">Industrial Physicist · AI/ML Engineer in Training</p>
+  <h1>Okanlawon<br>Micheal Olatunji<span class="cursor"></span></h1>
+  <p class="hero-sub">Building intelligent systems at the intersection of physics, climate, and machine learning</p>
+  <p class="hero-desc">
+    BSc Industrial Physics graduate from Covenant University with research in atmospheric signal propagation, 
+    machine learning for energy systems, and climate-driven wireless communication reliability. 
+    Based in Nigeria — working toward a Master's abroad in AI/ML Engineering.
+  </p>
+  <div class="hero-actions">
+    <a href="https://zenodo.org/records/22759087" target="_blank" class="btn btn-primary">View Thesis ↗</a>
+    <a href="https://github.com/okanlawon21" target="_blank" class="btn btn-outline">GitHub</a>
+    <a href="https://www.linkedin.com/in/micheal-okanlawon/" target="_blank" class="btn btn-outline">LinkedIn</a>
+    <a href="mailto:micheal.okanlawon.ola@gmail.com" class="btn btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">4.16<span style="font-size:1rem;color:var(--grey)">/5.00</span></div>
+      <div class="stat-label">CGPA — Covenant University</div>
+    </div>
+    <div>
+      <div class="stat-num">95.94<span style="font-size:1rem;color:var(--grey)">%</span></div>
+      <div class="stat-label">R² — Thesis regression model</div>
+    </div>
+    <div>
+      <div class="stat-num">10</div>
+      <div class="stat-label">Years of meteorological data analysed</div>
+    </div>
+    <div>
+      <div class="stat-num">2026</div>
+      <div class="stat-label">CCAI Summer School participant</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">background</p>
+  <h2>About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I am a <strong>BSc Industrial Physics</strong> graduate (Electronics & IT Application) from Covenant University, Nigeria, 
+        where I graduated with a CGPA of 4.16/5.00. My academic formation spans electromagnetics, signal processing, 
+        atmospheric physics, and computational methods.
+      </p>
+      <p>
+        My research examines how <strong>climate-driven changes in atmospheric water vapour</strong> affect microwave 
+        radio wave communication in Abuja, Nigeria — applying ITU-R P.453-14 formulations to a decade of 
+        meteorological data and validating results against standard propagation models.
+      </p>
+      <p>
+        Beyond signal propagation, I develop <strong>machine learning systems for energy forecasting</strong> — 
+        including an ongoing Nigeria Grid Energy Demand Forecasting project using LSTM neural networks and 
+        Random Forest models trained on NERC grid data.
+      </p>
+      <p>
+        I was a <strong>selected participant</strong> in the Climate Change AI Virtual Summer School 2026, 
+        where I completed tutorials in statistical downscaling, optimal power flow with AI, tsunami alert prediction, 
+        and bioacoustic monitoring — all notebooks publicly available on GitHub.
+      </p>
+    </div>
+    <div class="about-details">
+      <div class="detail-item">
+        <span class="detail-label">location</span>
+        <span class="detail-value">Ifo, Ogun State, Nigeria</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">degree</span>
+        <span class="detail-value">BSc Industrial Physics, Covenant University</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">target</span>
+        <span class="detail-value">MSc AI/ML Engineering — 2027 intake</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">research area</span>
+        <span class="detail-value">Atmospheric physics · Signal propagation · Energy ML</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">service</span>
+        <span class="detail-value">NYSC — Computer & Physics Teacher, Blissful Home Schools</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">technical toolkit</p>
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-category">programming</div>
+      <div class="skill-list">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">LaTeX</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">machine learning</div>
+      <div class="skill-list">
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">Keras</span>
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">LSTM</span>
+        <span class="skill-tag">Random Forest</span>
+        <span class="skill-tag">Linear Regression</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">research & analysis</div>
+      <div class="skill-list">
+        <span class="skill-tag">ITU-R P.453-14</span>
+        <span class="skill-tag">ITU-R P.676</span>
+        <span class="skill-tag">OriginPro</span>
+        <span class="skill-tag">Statistical Regression</span>
+        <span class="skill-tag">R² Validation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">data & devops</div>
+      <div class="skill-list">
+        <span class="skill-tag">Git / GitHub</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">Streamlit</span>
+        <span class="skill-tag">Microsoft Excel</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">domain knowledge</div>
+      <div class="skill-list">
+        <span class="skill-tag">Atmospheric Physics</span>
+        <span class="skill-tag">Signal Propagation</span>
+        <span class="skill-tag">Power Systems</span>
+        <span class="skill-tag">Radio Wave Communication</span>
+        <span class="skill-tag">Climate Science</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">communication</div>
+      <div class="skill-list">
+        <span class="skill-tag">Technical Writing</span>
+        <span class="skill-tag">Scientific Communication</span>
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">Literature Review</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">selected work</p>
+  <h2>Projects</h2>
+  <div class="projects-list">
+
+    <div class="project-card">
+      <div>
+        <div class="project-title">Nigeria Grid Energy Demand Forecasting</div>
+        <p class="project-desc">
+          An ongoing ML project developing electricity demand forecasting models for Nigeria's national grid. 
+          Built Linear Regression and Random Forest baselines, then developed an LSTM neural network in PyTorch/Keras 
+          for time-series demand prediction. Data sourced from NERC and Our World in Data. 
+          Streamlit dashboard deployment in progress.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">PyTorch</span>
+          <span class="project-tag">Keras</span>
+          <span class="project-tag">LSTM</span>
+          <span class="project-tag">Scikit-learn</span>
+          <span class="project-tag">Streamlit</span>
+        </div>
+      </div>
+      <a href="https://github.com/okanlawon21/MachineLearningProject" target="_blank" class="project-link">
+        GitHub ↗
+      </a>
+    </div>
+
+    <div class="project-card">
+      <div>
+        <div class="project-title">CCAI Summer School — Climate AI Notebooks</div>
+        <p class="project-desc">
+          Four complete tutorial notebooks from the Climate Change AI Virtual Summer School 2026, covering: 
+          statistical downscaling of climate projections with DeepESD, AI for optimal power flow, 
+          tsunami alert prediction from earthquake observations, and agile bioacoustic species monitoring. 
+          All publicly available on GitHub.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">PyTorch</span>
+          <span class="project-tag">Deep Learning</span>
+          <span class="project-tag">Climate AI</span>
+          <span class="project-tag">Signal Processing</span>
+        </div>
+      </div>
+      <a href="https://github.com/okanlawon21" target="_blank" class="project-link">
+        GitHub ↗
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">professional history</p>
+  <h2>Experience</h2>
+  <div class="experience-list">
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Computer & Physics Teacher — NYSC</span>
+        <span class="exp-date">Oct 2025 – Present</span>
+      </div>
+      <div class="exp-org">Blissful Home Private Schools · Ifo, Ogun State</div>
+      <ul class="exp-bullets">
+        <li>Teaching Computer Science and Physics to secondary school students with practical demonstrations</li>
+        <li>Designed and implemented a digital record-keeping system for student academic data</li>
+        <li>Provided ICT training to teaching staff, improving administrative efficiency</li>
+        <li>Participated in ICPC CDS anti-corruption outreach to markets and educational institutions</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <span class="exp-role">Industrial Trainee — Internship</span>
+        <span class="exp-date">Mar 2024 – Sep 2024</span>
+      </div>
+      <div class="exp-org">Transmission Company of Nigeria (TCN) · Papalanto Sub-Region</div>
+      <ul class="exp-bullets">
+        <li>Rotated across Electrical, Lines, Protection Control & Metering (PC&M), and HSE departments</li>
+        <li>Assisted in relay tests, CT ratio verification, and leakage current tests on power transformers</li>
+        <li>Contributed to annual preventive maintenance at LaFarge/TCN Papalanto and Sango/Ota substations</li>
+        <li>Supported monthly energy meter readings and CT ratio verification across metering points</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PUBLICATIONS / RESEARCH -->
+<section id="publications">
+  <p class="section-label">research output</p>
+  <h2>Research</h2>
+  <div class="pub-card">
+    <div class="pub-title">
+      Effect of Increased Atmospheric Water Vapour due to Climate Change on Radio Wave Communication in Abuja, North-Central Nigeria
+    </div>
+    <div class="pub-meta">BSc Thesis · Covenant University · March–August 2025 · DOI: 10.5281/zenodo.22759087</div>
+    <p class="pub-abstract">
+      This study applies the ITU-R P.453-14 formulation to a decade of meteorological observations for Abuja, Nigeria (2015–2024) 
+      to compute monthly and seasonal profiles of water vapour pressure, saturation vapour pressure, and enhancement factors. 
+      A Multiple Linear Regression model validated against the ITU-R P.453-14 propagation standard achieved an R² of 95.94%, 
+      identifying atmospheric water vapour as the primary predictor of signal attenuation. Seasonal peaks in April–May 
+      present the highest risk to frequencies above 10 GHz, with implications for 5G and satellite link reliability 
+      in West African tropical climates.
+    </p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+      <a href="https://zenodo.org/records/22759087" target="_blank" class="btn btn-primary" style="font-size:0.8rem; padding:0.6rem 1.25rem;">
+        Read on Zenodo ↗
+      </a>
+      <span class="project-tag" style="display:flex;align-items:center;">ITU-R P.453-14</span>
+      <span class="project-tag" style="display:flex;align-items:center;">Signal Propagation</span>
+      <span class="project-tag" style="display:flex;align-items:center;">Climate Change</span>
+      <span class="project-tag" style="display:flex;align-items:center;">Atmospheric Physics</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" style="max-width:1100px;margin:0 auto;padding:5rem 4rem;">
+  <div class="contact-section">
+    <p class="section-label" style="text-align:center;margin-bottom:1rem;">get in touch</p>
+    <h2>Let's Connect</h2>
+    <p>
+      Open to research collaborations, graduate supervision inquiries, and scholarship opportunities. 
+      Feel free to reach out directly.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:micheal.okanlawon.ola@gmail.com" class="btn btn-primary">
+        micheal.okanlawon.ola@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/micheal-okanlawon/" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/okanlawon21" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="https://zenodo.org/records/22759087" target="_blank" class="btn btn-outline">Zenodo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Okanlawon Micheal Olatunji · Ifo, Nigeria · Built with HTML/CSS</p>
+</footer>
+
+</body>
+</html>
